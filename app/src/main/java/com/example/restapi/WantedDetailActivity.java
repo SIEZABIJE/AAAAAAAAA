@@ -24,7 +24,6 @@ public class WantedDetailActivity extends AppCompatActivity {
 
             setupPicasso();
 
-            // Get data from intent with null checks
             String imageUrl = getIntent().getStringExtra("imageUrl");
             String title = getIntent().getStringExtra("title");
             String description = getIntent().getStringExtra("description");
@@ -33,7 +32,6 @@ public class WantedDetailActivity extends AppCompatActivity {
             String nationality = getIntent().getStringExtra("nationality");
             String status = getIntent().getStringExtra("status");
 
-            // Find views with null checks
             ImageView imageView = findViewById(R.id.detailImage);
             TextView titleText = findViewById(R.id.detailTitle);
             TextView descriptionText = findViewById(R.id.detailDescription);
@@ -47,7 +45,6 @@ public class WantedDetailActivity extends AppCompatActivity {
                 return;
             }
 
-            // Set text with null checks
             if (titleText != null) titleText.setText(title != null ? title : "");
             if (descriptionText != null) descriptionText.setText(description != null ? description : "");
             if (rewardText_view != null) rewardText_view.setText(rewardText != null ? rewardText : "");
@@ -55,7 +52,6 @@ public class WantedDetailActivity extends AppCompatActivity {
             if (nationalityText != null) nationalityText.setText("Nationality: " + (nationality != null ? nationality : "Unknown"));
             if (statusText != null) statusText.setText("Status: " + (status != null ? status : "Unknown"));
 
-            // Load image with error handling
             if (imageUrl != null && !imageUrl.isEmpty()) {
                 Log.d(TAG, "Loading image from URL: " + imageUrl);
                 try {
@@ -109,7 +105,7 @@ public class WantedDetailActivity extends AppCompatActivity {
                 .build();
         } catch (Exception e) {
             Log.e(TAG, "Error setting up Picasso", e);
-            picasso = Picasso.get(); // Fallback to default Picasso
+            picasso = Picasso.get();
         }
     }
 } 
